@@ -1,0 +1,18 @@
+<div class="container mt-5 border">
+  <h2 class="text-center border-bottom"><%= @list.name %></h1>
+ <%  @list.bookmarks.each  do |bookmark| %>
+ <ul>
+  <li><strong>Title : </strong><%= @movie.title %></li>
+  <li><strong>Overview : </strong><%= @movie.overview%></li>
+  <li><strong>Comment : </strong><%= bookmark.comment%></li>
+ <%= link_to "Delete a movie",
+    bookmark_path(bookmark),
+    class: "btn btn-success" ,
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+ </ul>
+
+  <% end %>
+   <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-success"  %>
+
+  <%= link_to "Back", lists_path, class: "btn btn-success"  %>
+</div>
